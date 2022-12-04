@@ -14,6 +14,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import java.util.List;
 import ma.emsi.tpcustomernouhaila.entities.Customer;
+
 /**
  * Gère la persistance des Customers.
  */
@@ -34,5 +35,9 @@ public class CustomerManager {
 
     public void persist(Customer customer) {
         em.persist(customer);
+    }
+
+    public Customer getCustomer(int idCustomer) {
+        return em.find(Customer.class, idCustomer);
     }
 }

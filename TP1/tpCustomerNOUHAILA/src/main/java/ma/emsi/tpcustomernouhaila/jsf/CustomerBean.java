@@ -17,26 +17,30 @@ import ma.emsi.tpcustomernouhaila.entities.Customer;
  * @author Pc
  */
 /**
- * Backing bean de la page CustomerList.xhtml.
+ * Backing bean pour la page CustomerList.
  */
-@Named(value = "customerBean")  
-@ViewScoped  
-public class CustomerBean implements Serializable {  
-  private List<Customer> customerList;  
+@Named(value = "customerBean")
+@ViewScoped
+public class CustomerBean implements Serializable {
+  private List<Customer> customers;
 
   @EJB
-  private CustomerManager customerManager;  
-        
-  public CustomerBean() {  }  
-        
+  private CustomerManager customerManager;
+
+  /**
+   * Creates a new instance of CustomerMBean
+   */
+  public CustomerBean() {
+  }
+
   /** 
-   * Retourne la liste des clients pour affichage dans une DataTable 
-   * @return 
-   */  
+  * Renvoie la liste des clients pour affichage dans une DataTable 
+  * @return 
+  */  
   public List<Customer> getCustomers() {
-    if (customerList == null) {
-      customerList = customerManager.getAllCustomers();
+    if (customers == null) {
+      customers = customerManager.getAllCustomers();
     }
-    return customerList;
+    return customers;  
   }  
 }
