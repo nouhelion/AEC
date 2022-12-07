@@ -19,7 +19,7 @@ import ma.emsi.tpcustomernouhaila.entities.Customer;
 /**
  * Backing bean pour la page CustomerList.
  */
-@Named(value = "customerBean")
+@Named(value = "CustomerBean")
 @ViewScoped
 public class CustomerBean implements Serializable {
   private List<Customer> customers;
@@ -43,4 +43,5 @@ public class CustomerBean implements Serializable {
     }
     return customers;  
   }  
+  
 }

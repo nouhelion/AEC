@@ -37,7 +37,4 @@ public class CustomerManager {
         em.persist(customer);
     }
 
-    public Customer getCustomer(int idCustomer) {
-        return em.find(Customer.class, idCustomer);
-    }
 }
