@@ -5,6 +5,9 @@
 package ma.emsi.tpcustomernouhaila.jsf;
 
 import jakarta.ejb.EJB;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.convert.Converter;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
@@ -72,4 +75,33 @@ public class CustomerDetailsBean implements Serializable {
   public List<DiscountCode> getDiscountCodes() {
     return discountCodeManager.getAllDiscountCodes();
   }
+  /**
+   * getter pour la propriété discountCodeConverter.
+     * @return 
+   */              
+  public Converter<DiscountCode> getDiscountCodeConverter() {
+    return new Converter<DiscountCode>() {
+      /**
+       * Convertit une String en DiscountCode.
+       *
+       * @param value valeur à convertir
+       */
+      @Override
+      public DiscountCode getAsObject(FacesContext context, UIComponent component, String value) {
+        return discountCodeManager.findById(value);
+      }
+
+      /**
+       * Convertit un DiscountCode en String.
+       *
+       * @param value valeur à convertir
+       */
+      @Override
+      public String getAsString(FacesContext context, UIComponent component, DiscountCode value) {
+        return value.getDiscountCode();
+      }
+    };
+  }
+  
 }
+
