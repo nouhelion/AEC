@@ -14,9 +14,9 @@ import jakarta.enterprise.context.RequestScoped;
  * @author Pc
  */
 
-@Named(value = "bean")
+@Named(value = "bean2")
 @RequestScoped
-public class Bean {
+public class Bean2 {
 
     private int nombre;
 

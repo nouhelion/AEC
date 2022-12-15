@@ -13,8 +13,8 @@
         <h:form>
             <h:outputLabel value="Entrez un nombre" for="nombre"/>
             <h:inputText id="nombre" value="#{bean.nombre}"/>
-            <h:commandButton value="Valider" action="affichage_3"/>
+            <h:commandButton value="Valider" action="#{bean.afficher()}"/>
         </h:form>
-
     </h:body>
-</html>
+    </html>
+    
