@@ -5,25 +5,23 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
-        <div id="top" class="top">
-            <ui:insert name="top">TP PRG - #{titre}</ui:insert>
-        </div>
+
         <ui:composition template="./WEB-INF/templates/template_defaut.xhtml">
-            <ui:param name="titre" value="Exercice 1"/>
+<ui:param name="titre" value="Exercice 1"/>
 
-            <ui:define name="content">
-                <h1>Application&gt;formulaire_1</h1>
+      <ui:define name="content">
+        <h1>Application&gt;formulaire_1</h1>
 
-                <h:form>
-                    <h:outputLabel value="Entrez un nombre" for="nombre"/>
-                    <h:inputText id="nombre" value="#{bean.nombre}"/>
-                    <h:message for="nombre"/>
-                    <br/>
-                    <h:commandButton value="Valider" action="affichage__1"/>
-                </h:form>
-            </ui:define>
+        <h:form>
+          <h:outputLabel value="Entrez un nombre" for="nombre"/>
+          <h:inputText id="nombre" value="#{bean.nombre}"/>
+          <h:message for="nombre"/>
+          <br/>
+          <h:commandButton value="Valider" action="affichage__1"/>
+        </h:form>
+      </ui:define>
 
-        </ui:composition>
+    </ui:composition>
 
-    </body>
+  </body>
 </html>
