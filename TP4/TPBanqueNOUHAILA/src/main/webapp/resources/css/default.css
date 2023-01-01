@@ -27,3 +27,27 @@ a:link:hover, a:visited:hover  {
   font-weight : bold;
   text-decoration : underline;
 }
+
+.ui-datatable {
+    display: table;
+}
+
+.ui-datatable table {
+    table-layout: auto !important;
+}
+
+td {
+  border-width: 1px !important;
+}
+
+/*
+.ui-datatable-header { width: fit-content !important; }
+
+body .ui-datatable .ui-datatable-data > tr > td {
+  border-width: 1px 1px 1px 1px !important;
+}
+
+[role=gridcell] {
+  border-left-width: 5px !important;
+}
+*/
