@@ -46,8 +46,8 @@ public class GestionnaireCompte {
     }
 
     public long nbComptes() {
-        TypedQuery<Long> query
-                = em.createQuery("SELECT COUNT(*) FROM CompteBancaire", Long.class);
+        String q = "select count(*) from CompteBancaire";
+        TypedQuery<Long> query = em.createQuery(q, Long.class);
         return query.getSingleResult();
     }
 

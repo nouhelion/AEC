@@ -10,6 +10,7 @@ import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
 import ma.emsi.tpbanquenouhaila.entities.CompteBancaire;
 
+
 /**
  *
  * @author Pc
@@ -21,6 +22,9 @@ public class Init {
     @EJB
     private GestionnaireCompte gestionnaireCompte;
 
+    /**
+     *
+     */
     @PostConstruct
     public void initComptes() {
         if (gestionnaireCompte.nbComptes() == 0) {
