@@ -41,13 +41,13 @@ public class GestionnaireCompte {
 
     public List<CompteBancaire> getAllComptes() {
         TypedQuery query
-                = em.createNamedQuery("comptebancaire.findAll", CompteBancaire.class);
+                = em.createNamedQuery("CompteBancaire.findAll", CompteBancaire.class);
         return query.getResultList();
     }
 
     public long nbComptes() {
         TypedQuery<Long> query
-                = em.createQuery("select count(c) from comptebancaire c", Long.class);
+                = em.createQuery("SELECT COUNT(*) FROM CompteBancaire", Long.class);
         return query.getSingleResult();
     }
 
