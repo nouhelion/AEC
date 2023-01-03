@@ -10,7 +10,6 @@ import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
 import ma.emsi.tpbanquenouhaila.entities.CompteBancaire;
 
-
 /**
  *
  * @author Pc
