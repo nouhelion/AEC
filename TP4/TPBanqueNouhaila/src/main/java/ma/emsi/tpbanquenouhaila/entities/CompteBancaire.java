@@ -42,11 +42,6 @@ public class CompteBancaire implements Serializable {
         return nom;
     }
 
-    /**
-     * Set the value of nom
-     *
-     * @param nom new value of nom
-     */
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -90,10 +85,7 @@ public class CompteBancaire implements Serializable {
             return false;
         }
         CompteBancaire other = (CompteBancaire) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override

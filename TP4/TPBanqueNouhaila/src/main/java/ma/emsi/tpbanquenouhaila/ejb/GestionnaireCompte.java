@@ -30,6 +30,7 @@ import ma.emsi.tpbanquenouhaila.entities.CompteBancaire;
         }
 )
 @Stateless
+@PersistenceContext(unitName = "banquePU")
 public class GestionnaireCompte {
 
     @PersistenceContext
