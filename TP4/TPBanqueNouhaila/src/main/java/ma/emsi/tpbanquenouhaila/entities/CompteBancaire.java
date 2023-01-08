@@ -21,6 +21,8 @@ public class CompteBancaire implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String nom;
+    private int solde;
 
     public Long getId() {
         return id;
@@ -28,6 +30,27 @@ public class CompteBancaire implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public CompteBancaire() {
+
+    }
+
+    public CompteBancaire(String nom, int solde) {
+        this.nom = nom;
+        this.solde = solde;
+    }
+
+    public void deposer(int montant) {
+        solde += montant;
+    }
+
+    public void retirer(int montant) {
+        if (montant < solde) {
+            solde -= montant;
+        } else {
+            solde = 0;
+        }
     }
 
     @Override
@@ -54,5 +77,5 @@ public class CompteBancaire implements Serializable {
     public String toString() {
         return "ma.emsi.tpbanquenouhaila.entities.CompteBancaire[ id=" + id + " ]";
     }
-    
+
 }
