@@ -6,6 +6,11 @@ package ma.emsi.tpbanquenouhaila.ejb;
 
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+import java.util.List;
+import ma.emsi.tpbanquenouhaila.entities.CompteBancaire;
 
 /**
  *
@@ -26,5 +31,18 @@ import jakarta.ejb.Stateless;
 )
 @Stateless
 public class GestionnaireCompte {
+
+    @PersistenceContext
+    private EntityManager em;
+
+    public void creerCompte(CompteBancaire compte) {
+        em.persist(compte);
+    }
+
+    public List<CompteBancaire> getAllComptes() {
+        TypedQuery query
+                = em.createNamedQuery("CompteBancaire.findAll", CompteBancaire.class);
+        return query.getResultList();
+    }
 
 }
