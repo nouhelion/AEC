@@ -36,6 +36,27 @@ public class CompteBancaire implements Serializable {
 
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * Set the value of nom
+     *
+     * @param nom new value of nom
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public int getSolde() {
+        return solde;
+    }
+
+    public void setSolde(int solde) {
+        this.solde = solde;
+    }
+
     public CompteBancaire(String nom, int solde) {
         this.nom = nom;
         this.solde = solde;
