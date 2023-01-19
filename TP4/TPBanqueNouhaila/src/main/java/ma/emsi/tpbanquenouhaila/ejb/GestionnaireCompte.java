@@ -5,11 +5,11 @@
 package ma.emsi.tpbanquenouhaila.ejb;
 
 import jakarta.annotation.sql.DataSourceDefinition;
-import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
 import java.util.List;
+import jakarta.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import ma.emsi.tpbanquenouhaila.entities.CompteBancaire;
 
 /**
@@ -30,7 +30,6 @@ import ma.emsi.tpbanquenouhaila.entities.CompteBancaire;
         }
 )
 @Stateless
-@PersistenceContext(unitName = "banquePU")
 public class GestionnaireCompte {
 
     @PersistenceContext
@@ -47,9 +46,51 @@ public class GestionnaireCompte {
     }
 
     public long nbComptes() {
-        TypedQuery<Long> query
-                = em.createQuery("select count(c) from CompteBancaire c", Long.class);
+        String q = "select count(*) from CompteBancaire";
+        TypedQuery<Long> query = em.createQuery(q, Long.class);
         return query.getSingleResult();
+    }
+
+    public void transferer(CompteBancaire source, CompteBancaire destination,
+            int montant) {
+        source.retirer(montant);
+        destination.deposer(montant);
+        update(source);
+        update(destination);
+    }
+
+    public CompteBancaire update(CompteBancaire compteBancaire) {
+        return em.merge(compteBancaire);
+    }
+
+    public void supprimer(CompteBancaire compte) {
+        em.remove(em.merge(compte));
+    }
+
+    public CompteBancaire findById(long id) {
+        return em.find(CompteBancaire.class, id);
+    }
+
+    /**
+     * Dépôt d'argent sur un compte bancaire.
+     *
+     * @param compteBancaire
+     * @param montant
+     */
+    public void deposer(CompteBancaire compteBancaire, int montant) {
+        compteBancaire.deposer(montant);
+        update(compteBancaire);
+    }
+
+    /**
+     * Retrait d'argent sur un compte bancaire.
+     *
+     * @param compteBancaire
+     * @param montant
+     */
+    public void retirer(CompteBancaire compteBancaire, int montant) {
+        compteBancaire.retirer(montant);
+        update(compteBancaire);
     }
 
 }

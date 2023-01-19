@@ -9,13 +9,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
 
 /**
  *
  * @author Pc
  */
-@NamedQuery(name = "CompteBancaire.findAll", query = "select c from CompteBancaire c")
 @Entity
 public class CompteBancaire implements Serializable {
 
@@ -26,6 +24,14 @@ public class CompteBancaire implements Serializable {
     private String nom;
     private int solde;
 
+    public CompteBancaire(String nom, int solde) {
+        this.nom = nom;
+        this.solde = solde;
+    }
+
+    public CompteBancaire() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -34,14 +40,20 @@ public class CompteBancaire implements Serializable {
         this.id = id;
     }
 
-    public CompteBancaire() {
-
-    }
-
+    /**
+     * Get the value of nom
+     *
+     * @return the value of nom
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * Set the value of nom
+     *
+     * @param nom new value of nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -51,11 +63,6 @@ public class CompteBancaire implements Serializable {
     }
 
     public void setSolde(int solde) {
-        this.solde = solde;
-    }
-
-    public CompteBancaire(String nom, int solde) {
-        this.nom = nom;
         this.solde = solde;
     }
 

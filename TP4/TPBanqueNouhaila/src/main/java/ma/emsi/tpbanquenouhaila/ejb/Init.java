@@ -10,6 +10,7 @@ import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
 import ma.emsi.tpbanquenouhaila.entities.CompteBancaire;
 
+
 /**
  *
  * @author Pc
@@ -17,17 +18,21 @@ import ma.emsi.tpbanquenouhaila.entities.CompteBancaire;
 @Singleton
 @Startup
 public class Init {
-     @EJB
-  private GestionnaireCompte gestionnaireCompte;
 
-  @PostConstruct
-  public void initComptes() {
-    if (gestionnaireCompte.nbComptes() != 0) {
-      return;
+    @EJB
+    private GestionnaireCompte gestionnaireCompte;
+
+    /**
+     *
+     */
+    @PostConstruct
+    public void initComptes() {
+        if (gestionnaireCompte.nbComptes() == 0) {
+            // Création des 4 comptes
+            gestionnaireCompte.creerCompte(new CompteBancaire("John Lennon", 150000));
+            gestionnaireCompte.creerCompte(new CompteBancaire("Paul McCartney", 950000));
+            gestionnaireCompte.creerCompte(new CompteBancaire("Georges Harrisson", 100000));
+            gestionnaireCompte.creerCompte(new CompteBancaire("Ringo Starr", 20000));
+        }
     }
-    gestionnaireCompte.creerCompte(new CompteBancaire("John Lennon", 150000));
-    gestionnaireCompte.creerCompte(new CompteBancaire("Paul McCartney", 950000));
-    gestionnaireCompte.creerCompte(new CompteBancaire("Ringo Starr", 20000));
-    gestionnaireCompte.creerCompte(new CompteBancaire("Georges Harrisson", 100000));
-  }
 }
